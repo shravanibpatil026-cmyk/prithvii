@@ -1,0 +1,1563 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #08050b;
+    color: #f9eaf1;
+
+    font-family: "DM Sans", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ===================================
+   OPENING SCREEN
+=================================== */
+
+#opening {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #24101d 0%,
+            #0d070c 45%,
+            #050306 100%
+        );
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+#opening.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+.opening-content {
+
+    animation:
+        openingAppear 1.5s ease;
+}
+
+
+.mini-title {
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+
+    color: #c98ba5;
+
+    margin-bottom: 20px;
+}
+
+
+.opening-content h1 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(70px, 15vw, 130px);
+
+    font-weight: 500;
+
+    line-height: .9;
+
+    color: #f7dce7;
+}
+
+
+.opening-content h1 span {
+
+    display: block;
+
+    color: #e47d9f;
+
+    font-style: italic;
+}
+
+
+.opening-line {
+
+    margin-top: 28px;
+
+    color: #a9919c;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+}
+
+
+.glow-button {
+
+    margin-top: 35px;
+
+    padding: 15px 28px;
+
+    border: 1px solid #d56a91;
+
+    border-radius: 100px;
+
+    background: rgba(213,106,145,.08);
+
+    color: #f5cbd9;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px
+        rgba(213,106,145,.15);
+
+    transition: .3s;
+}
+
+
+.glow-button:hover {
+
+    background: #d56a91;
+
+    color: #fff;
+
+    box-shadow:
+        0 0 45px
+        rgba(213,106,145,.5);
+
+    transform: translateY(-3px);
+}
+
+
+
+/* ===================================
+   MAIN
+=================================== */
+
+#mainContent {
+
+    display: none;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #29121f,
+            #0b070d 40%,
+            #08050b 100%
+        );
+}
+
+
+#mainContent.show {
+
+    display: block;
+
+    animation: fadeIn 1.5s ease;
+}
+
+
+
+/* ===================================
+   NAVBAR
+=================================== */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 6%;
+
+    background:
+        linear-gradient(
+            rgba(8,5,11,.9),
+            transparent
+        );
+
+    backdrop-filter: blur(4px);
+}
+
+
+.nav-logo {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 23px;
+
+    color: #e88baa;
+}
+
+
+.nav-text {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #826a77;
+}
+
+
+
+/* ===================================
+   HERO
+=================================== */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 25px;
+
+    position: relative;
+}
+
+
+.hero-small {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #c57b98;
+
+    margin-bottom: 25px;
+}
+
+
+.hero h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(48px, 9vw, 90px);
+
+    font-weight: 500;
+
+    line-height: .95;
+
+    color: #f7e2eb;
+}
+
+
+.typing-area {
+
+    margin-top: 35px;
+
+    min-height: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 23px;
+
+    color: #d991aa;
+}
+
+
+.cursor {
+
+    animation: blink .8s infinite;
+}
+
+
+.scroll-hint {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    color: #665460;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.scroll-hint span {
+
+    font-size: 22px;
+
+    color: #b75b7d;
+
+}
+
+
+
+/* ===================================
+   GENERAL SECTIONS
+=================================== */
+
+.story-section,
+.memory-section,
+.letter-section,
+.honest-section,
+.final-section {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 130px 30px;
+}
+
+
+.section-label {
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #b95d80;
+
+    margin-bottom: 18px;
+}
+
+
+.story-section h2,
+.memory-section h2,
+.letter-section h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(45px, 7vw, 70px);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    color: #f5dce6;
+}
+
+
+.story-section h2 i {
+
+    color: #df7e9f;
+}
+
+
+.section-intro {
+
+    max-width: 600px;
+
+    margin-top: 25px;
+
+    line-height: 1.9;
+
+    color: #98818c;
+
+    font-size: 15px;
+}
+
+
+
+/* ===================================
+   TIMELINE
+=================================== */
+
+.timeline {
+
+    position: relative;
+
+    margin-top: 70px;
+
+    padding-left: 35px;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #6d334a,
+            transparent
+        );
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    margin-bottom: 55px;
+}
+
+
+.timeline-dot {
+
+    position: absolute;
+
+    left: -41px;
+
+    top: 0;
+
+    width: 13px;
+
+    height: 13px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 15px;
+
+    color: #e27699;
+}
+
+
+.timeline-card {
+
+    padding: 28px;
+
+    border: 1px solid
+        rgba(190,94,130,.16);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .3s;
+}
+
+
+.timeline-card:hover {
+
+    transform:
+        translateX(8px);
+
+    border-color:
+        rgba(214,105,146,.4);
+
+    background:
+        rgba(214,105,146,.04);
+}
+
+
+.timeline-card span {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #a85675;
+}
+
+
+.timeline-card h3 {
+
+    margin: 12px 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 500;
+
+    color: #edc8d7;
+}
+
+
+.timeline-card p {
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    color: #927c87;
+}
+
+
+
+/* ===================================
+   MEMORY CARDS
+=================================== */
+
+.memory-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 60px;
+}
+
+
+.memory-card {
+
+    min-height: 260px;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    border-radius: 20px;
+
+    border: 1px solid
+        rgba(255,255,255,.07);
+
+    transition: .4s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.memory-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(214,105,146,.15),
+            transparent 60%
+        );
+
+    pointer-events: none;
+}
+
+
+.memory-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(214,105,146,.35);
+}
+
+
+.card-one {
+    background:
+        linear-gradient(
+            135deg,
+            #21121c,
+            #10090e
+        );
+}
+
+
+.card-two {
+    background:
+        linear-gradient(
+            135deg,
+            #161021,
+            #0d080f
+        );
+}
+
+
+.card-three {
+    background:
+        linear-gradient(
+            135deg,
+            #211217,
+            #0d080b
+        );
+}
+
+
+.card-four {
+    background:
+        linear-gradient(
+            135deg,
+            #18121d,
+            #0b080e
+        );
+}
+
+
+.memory-symbol {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 28px;
+
+    font-size: 35px;
+
+    color: #a64e70;
+}
+
+
+.memory-card h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 32px;
+
+    font-weight: 500;
+
+    color: #f0cedb;
+
+    position: relative;
+}
+
+
+.memory-card p {
+
+    margin-top: 8px;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+
+    color: #947d88;
+
+    position: relative;
+}
+
+
+
+/* ===================================
+   ENVELOPE
+=================================== */
+
+.letter-section {
+
+    text-align: center;
+
+    min-height: 1000px;
+}
+
+
+.envelope {
+
+    width: 330px;
+
+    height: 220px;
+
+    margin:
+        80px auto 35px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+}
+
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #5e263d;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.5);
+}
+
+
+.letter-paper {
+
+    position: absolute;
+
+    left: 10px;
+
+    right: 10px;
+
+    bottom: 10px;
+
+    height: 195px;
+
+    background: #fff6f8;
+
+    color: #55313e;
+
+    border-radius: 4px;
+
+    overflow: hidden;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        transform 1s ease;
+
+    z-index: 2;
+}
+
+
+.envelope-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #71304b,
+            #4b1c30
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 3;
+
+    border-radius: 8px;
+}
+
+
+.envelope-seal {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #d7678e;
+
+    color: white;
+
+    font-size: 22px;
+
+    z-index: 4;
+
+    box-shadow:
+        0 0 25px
+        rgba(215,103,142,.4);
+
+    transition: .5s;
+}
+
+
+.envelope.open
+.envelope-seal {
+
+    opacity: 0;
+}
+
+
+.envelope.open
+.letter-paper {
+
+    transform:
+        translateY(-160px);
+
+    height: 390px;
+
+    z-index: 5;
+
+    overflow-y: auto;
+}
+
+
+.letter-content {
+
+    padding: 25px;
+
+    text-align: left;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+}
+
+
+.letter-content p {
+
+    margin-bottom: 14px;
+}
+
+
+.letter-highlight {
+
+    color: #bb4c75;
+
+    font-size: 23px;
+
+    text-align: center;
+}
+
+
+.signature {
+
+    text-align: right;
+
+    color: #a94468;
+}
+
+
+.outline-button {
+
+    padding: 13px 24px;
+
+    border-radius: 100px;
+
+    border: 1px solid #9e4e6d;
+
+    background: transparent;
+
+    color: #d88ba6;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.outline-button:hover {
+
+    background: #9e4e6d;
+
+    color: white;
+}
+
+
+
+/* ===================================
+   HONEST SECTION
+=================================== */
+
+.honest-section {
+
+    text-align: center;
+
+    max-width: 750px;
+}
+
+
+.glowing-heart {
+
+    font-size: 70px;
+
+    color: #d8678e;
+
+    text-shadow:
+        0 0 30px
+        rgba(216,103,142,.6);
+
+    animation:
+        heartPulse 1.7s infinite;
+
+    margin-bottom: 30px;
+}
+
+
+.honest-section h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(45px, 8vw, 75px);
+
+    font-weight: 500;
+
+    color: #f5dbe5;
+}
+
+
+.honest-section > p:not(.section-label) {
+
+    margin: 22px auto;
+
+    max-width: 600px;
+
+    color: #95808a;
+
+    line-height: 1.9;
+}
+
+
+.big-line {
+
+    margin-top: 55px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    color: #d57c9b;
+
+    font-style: italic;
+}
+
+
+
+/* ===================================
+   FINAL SECTION
+=================================== */
+
+.final-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    max-width: 850px;
+}
+
+
+.final-stars {
+
+    color: #d66b91;
+
+    font-size: 25px;
+
+    margin-bottom: 35px;
+}
+
+
+.final-section h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(65px, 12vw, 110px);
+
+    font-weight: 500;
+
+    color: #f6dce7;
+}
+
+
+.final-question {
+
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    color: #b397a3;
+}
+
+
+.final-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    margin-top: 45px;
+}
+
+
+.yes-button,
+.know-button {
+
+    padding: 15px 24px;
+
+    border-radius: 100px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+
+.yes-button {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #df6b91,
+            #a83e66
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 35px
+        rgba(190,67,111,.25);
+}
+
+
+.know-button {
+
+    background: transparent;
+
+    border: 1px solid #754258;
+
+    color: #c58da2;
+}
+
+
+.yes-button:hover,
+.know-button:hover {
+
+    transform:
+        translateY(-4px);
+}
+
+
+#finalMessage {
+
+    display: none;
+
+    margin-top: 55px;
+
+    padding: 35px;
+
+    max-width: 600px;
+
+    border:
+        1px solid
+        rgba(213,103,143,.25);
+
+    border-radius: 25px;
+
+    background:
+        rgba(213,103,143,.05);
+
+    animation:
+        appear .9s ease;
+}
+
+
+#finalMessage.show {
+
+    display: block;
+}
+
+
+.heart-explosion {
+
+    font-size: 60px;
+
+    animation:
+        heartPulse 1.2s infinite;
+}
+
+
+#finalMessage h3 {
+
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 500;
+
+    color: #e8bdce;
+}
+
+
+#finalMessage p {
+
+    margin-top: 15px;
+
+    line-height: 1.8;
+
+    color: #a68c97;
+}
+
+
+.final-love {
+
+    margin-top: 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 35px;
+
+    color: #e47c9e;
+}
+
+
+.from {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+}
+
+
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 50px 20px 70px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.04);
+
+    color: #65525c;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+footer span {
+
+    display: block;
+
+    margin-top: 15px;
+
+    color: #b45778;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+}
+
+
+
+/* ===================================
+   STARS
+=================================== */
+
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+            1px 1px at 20% 30%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 80% 20%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 50% 70%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 90% 80%,
+            white,
+            transparent
+        );
+
+    background-size:
+        250px 250px;
+
+    opacity: .25;
+
+    z-index: 0;
+}
+
+
+.floating-heart {
+
+    position: fixed;
+
+    bottom: -30px;
+
+    color: #c9577d;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    animation:
+        floatHeart linear forwards;
+}
+
+
+
+/* ===================================
+   ANIMATIONS
+=================================== */
+
+@keyframes floatHeart {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: .8;
+
+    }
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes openingAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes blink {
+
+    50% {
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes heartPulse {
+
+    0%,100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.15);
+
+    }
+
+}
+
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media(max-width:600px) {
+
+    nav {
+
+        padding: 18px 20px;
+
+    }
+
+
+    .nav-text {
+
+        display: none;
+
+    }
+
+
+    .story-section,
+    .memory-section,
+    .letter-section,
+    .honest-section,
+    .final-section {
+
+        padding:
+            100px 20px;
+
+    }
+
+
+    .memory-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .memory-card {
+
+        min-height: 220px;
+
+    }
+
+
+    .envelope {
+
+        transform:
+            scale(.85);
+
+        margin-top: 60px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .envelope.open
+    .letter-paper {
+
+        transform:
+            translateY(-140px);
+
+    }
+
+
+    .final-buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+
+    }
+
+
+    .yes-button,
+    .know-button {
+
+        width: 100%;
+
+    }
+
+}
